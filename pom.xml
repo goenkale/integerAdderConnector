@@ -94,7 +94,7 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.bonita.connectors</groupId>
+      <groupId>com.victor.bonitasoft.connectors</groupId>
       <artifactId>integer-adder-connector</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>

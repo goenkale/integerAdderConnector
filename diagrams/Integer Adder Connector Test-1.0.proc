@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connectorconfiguration="http://wwww.bonitasoft.org/model/connector/configuration" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
   <process:MainProcess xmi:id="_BsgU4AawEe2B-dlb_BEfug" name="Integer Adder Connector Test" author="bonitasoft" bonitaVersion="7.14.0" bonitaModelVersion="7.12.0-004">
     <elements xmi:type="process:Pool" xmi:id="_Bsg78AawEe2B-dlb_BEfug" name="Integer Adder Connector Test">
       <elements xmi:type="process:Lane" xmi:id="_Bsg78QawEe2B-dlb_BEfug" name="Employé (lane)" actor="_Bsg8CgawEe2B-dlb_BEfug">
@@ -9,7 +9,9 @@
           <stepSummary xmi:type="expression:Expression" xmi:id="_Bsg79QawEe2B-dlb_BEfug" name="" content="" returnTypeFixed="true"/>
         </elements>
         <elements xmi:type="process:Task" xmi:id="_Bsg79gawEe2B-dlb_BEfug" name="Check result" outgoing="_yX_zkAawEe2B-dlb_BEfug" incoming="_Bsg8BwawEe2B-dlb_BEfug" overrideActorsOfTheLane="false">
-          <dynamicLabel xmi:type="expression:Expression" xmi:id="_Bsg79wawEe2B-dlb_BEfug" name="" content="" returnTypeFixed="true"/>
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_Bsg79wawEe2B-dlb_BEfug" name="displayName()" content="&quot;Result: &quot; + myResult" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true">
+            <referencedElements xmi:type="process:Data" xmi:id="_2dhuMAdjEe2MPM_oR1R3NA" name="myResult" dataType="_Bsg8IAawEe2B-dlb_BEfug"/>
+          </dynamicLabel>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_Bsg7-AawEe2B-dlb_BEfug" name="" content="" returnTypeFixed="true"/>
           <stepSummary xmi:type="expression:Expression" xmi:id="_Bsg7-QawEe2B-dlb_BEfug" name="" content="" returnTypeFixed="true"/>
           <loopCondition xmi:type="expression:Expression" xmi:id="_Bsg7-gawEe2B-dlb_BEfug" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
@@ -18,7 +20,7 @@
           <iteratorExpression xmi:type="expression:Expression" xmi:id="_Bsg7_QawEe2B-dlb_BEfug" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
           <completionCondition xmi:type="expression:Expression" xmi:id="_Bsg7_gawEe2B-dlb_BEfug" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <formMapping xmi:type="process:FormMapping" xmi:id="_Bsg7_wawEe2B-dlb_BEfug">
-            <targetForm xmi:type="expression:Expression" xmi:id="_Bsg8AAawEe2B-dlb_BEfug" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+            <targetForm xmi:type="expression:Expression" xmi:id="_26W0IAdjEe2MPM_oR1R3NA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
           </formMapping>
           <contract xmi:type="process:Contract" xmi:id="_Bsg8AQawEe2B-dlb_BEfug"/>
           <expectedDuration xmi:type="expression:Expression" xmi:id="_Bsg8AgawEe2B-dlb_BEfug" name="" content="" returnType="java.lang.Long" returnTypeFixed="true"/>
@@ -32,8 +34,35 @@
       <data xmi:type="process:Data" xmi:id="_w82rQAawEe2B-dlb_BEfug" name="myResult" dataType="_Bsg8IAawEe2B-dlb_BEfug">
         <defaultValue xmi:type="expression:Expression" xmi:id="_w82rQQawEe2B-dlb_BEfug" content=""/>
       </data>
+      <connectors xmi:type="process:Connector" xmi:id="_FT7-QAdjEe2MPM_oR1R3NA" name="integerAdderConnector" definitionId="integer-adder-connector" event="ON_ENTER" definitionVersion="1.0.0">
+        <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_FT7-QQdjEe2MPM_oR1R3NA" definitionId="integer-adder-connector" version="1.0.0" modelVersion="7.12.0-004">
+          <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_FT7-QgdjEe2MPM_oR1R3NA" key="firstInteger">
+            <expression xmi:type="expression:Expression" xmi:id="_FT7-QwdjEe2MPM_oR1R3NA" name="firstNumber" content="firstNumber" type="TYPE_CONTRACT_INPUT" returnTypeFixed="true">
+              <referencedElements xmi:type="process:ContractInput" xmi:id="_-qH8MAdjEe2MPM_oR1R3NA" name="firstNumber">
+                <mapping xmi:type="process:ContractInputMapping" xmi:id="_-qH8MQdjEe2MPM_oR1R3NA"/>
+              </referencedElements>
+            </expression>
+          </parameters>
+          <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_FT7-RAdjEe2MPM_oR1R3NA" key="secondInteger">
+            <expression xmi:type="expression:Expression" xmi:id="_FT7-RQdjEe2MPM_oR1R3NA" name="secondNumber" content="secondNumber" type="TYPE_CONTRACT_INPUT" returnTypeFixed="true">
+              <referencedElements xmi:type="process:ContractInput" xmi:id="_-qH8MgdjEe2MPM_oR1R3NA" name="secondNumber">
+                <mapping xmi:type="process:ContractInputMapping" xmi:id="_-qH8MwdjEe2MPM_oR1R3NA"/>
+              </referencedElements>
+            </expression>
+          </parameters>
+        </configuration>
+        <outputs xmi:type="expression:Operation" xmi:id="_FT7-RgdjEe2MPM_oR1R3NA">
+          <leftOperand xmi:type="expression:Expression" xmi:id="_FT7-RwdjEe2MPM_oR1R3NA" name="myResult" content="myResult" type="TYPE_VARIABLE">
+            <referencedElements xmi:type="process:Data" xmi:id="_FT7-SAdjEe2MPM_oR1R3NA" name="myResult" dataType="_Bsg8IAawEe2B-dlb_BEfug"/>
+          </leftOperand>
+          <rightOperand xmi:type="expression:Expression" xmi:id="_FT7-SQdjEe2MPM_oR1R3NA" name="result" content="result" type="CONNECTOR_OUTPUT_TYPE">
+            <referencedElements xmi:type="definition:Output" xmi:id="_xSJOcAdjEe2MPM_oR1R3NA" name="result" type="java.lang.String"/>
+          </rightOperand>
+          <operator xmi:type="expression:Operator" xmi:id="_FT7-SwdjEe2MPM_oR1R3NA" type="ASSIGNMENT"/>
+        </outputs>
+      </connectors>
       <formMapping xmi:type="process:FormMapping" xmi:id="_Bsg8AwawEe2B-dlb_BEfug">
-        <targetForm xmi:type="expression:Expression" xmi:id="_Bsg8BAawEe2B-dlb_BEfug" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+        <targetForm xmi:type="expression:Expression" xmi:id="_26W0IQdjEe2MPM_oR1R3NA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
       </formMapping>
       <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_Bsg8BQawEe2B-dlb_BEfug">
         <targetForm xmi:type="expression:Expression" xmi:id="_Bsg8BgawEe2B-dlb_BEfug" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
@@ -47,7 +76,14 @@
         <condition xmi:type="expression:Expression" xmi:id="_yYAaoQawEe2B-dlb_BEfug" name="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
       </connections>
       <actors xmi:type="process:Actor" xmi:id="_Bsg8CgawEe2B-dlb_BEfug" documentation="Ceci est un exemple d'acteur associé à tous les utilisateurs d'ACME" name="Employee actor" initiator="true"/>
-      <contract xmi:type="process:Contract" xmi:id="_Bsg8CwawEe2B-dlb_BEfug"/>
+      <contract xmi:type="process:Contract" xmi:id="_Bsg8CwawEe2B-dlb_BEfug">
+        <inputs xmi:type="process:ContractInput" xmi:id="_5BFQEAdjEe2MPM_oR1R3NA" name="firstNumber">
+          <mapping xmi:type="process:ContractInputMapping" xmi:id="_5BFQEQdjEe2MPM_oR1R3NA"/>
+        </inputs>
+        <inputs xmi:type="process:ContractInput" xmi:id="_5JwD4AdjEe2MPM_oR1R3NA" name="secondNumber">
+          <mapping xmi:type="process:ContractInputMapping" xmi:id="_5JwD4QdjEe2MPM_oR1R3NA"/>
+        </inputs>
+      </contract>
       <searchIndexes xmi:type="process:SearchIndex" xmi:id="_Bsg8DAawEe2B-dlb_BEfug">
         <name xmi:type="expression:Expression" xmi:id="_Bsg8DQawEe2B-dlb_BEfug" content="" returnTypeFixed="true"/>
         <value xmi:type="expression:Expression" xmi:id="_Bsg8DgawEe2B-dlb_BEfug" content="" returnTypeFixed="true"/>
